@@ -1,0 +1,24 @@
+1.- driver (jar) ok
+2.- base de datos ok
+3.- BDConnection.java ok
+
+4.- Clase (Usuario.java)
+5.- DAO.java (UsuarioDAO.java; UsuarioDAOImpl.java)
+6.- Servlet  y JSP
+
+
+create table usuarios(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	nick varchar(100) NOT NULL,
+	email VARCHAR(150) NOT NULL UNIQUE,
+	password varchar(255) NOT NULL,
+	edad int DEFAULT 0,
+	fecha_nacimiento DATE,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+1.- tabla libro
+2.- Clase (Libro.java)
+3.- vistas o jsp (libro.jsp crear; libros.jsp mostrar todos)
+4.- Servlets 
+5.- DAO.java (LibroDAO.java(interfaz); LibrooDAOImpl.java (implementacion de la interfaz))
