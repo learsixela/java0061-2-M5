@@ -1,5 +1,10 @@
 package cl.biblioteca.digital.servicios;
 
-public class LibroServicio {
+import cl.biblioteca.digital.models.Libro;
 
+public interface LibroServicio {
+
+	void crearLibro(Libro libro);
+
+	
 }

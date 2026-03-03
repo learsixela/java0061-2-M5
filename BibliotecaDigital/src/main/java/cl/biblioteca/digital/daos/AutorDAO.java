@@ -6,7 +6,7 @@ import cl.biblioteca.digital.models.Autor;
 
 public interface AutorDAO {
     void agregarAutor(Autor autor);
-    Autor obtenerTrabajador(int id);
+    Autor obtenerAutor(int id);
     List<Autor> obtenerTodosLosAutores();
     void actualizarAutor(Autor autor);
 }

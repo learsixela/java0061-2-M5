@@ -6,6 +6,8 @@ import java.util.List;
 import cl.biblioteca.digital.daos.AutorDAO;
 import cl.biblioteca.digital.daos.AutorDAOImpl;
 import cl.biblioteca.digital.models.Autor;
+import cl.biblioteca.digital.servicios.AutorServicio;
+import cl.biblioteca.digital.servicios.AutorServicioImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,14 +23,14 @@ public class RegistrarLibro extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//obtener los autores desde base datos
-		AutorDAO autorDAO = new AutorDAOImpl();
-		List<Autor> listaAutores= autorDAO.obtenerTodosLosAutores();
+		//obtener datos desde la capa servivio(logica negocio)
+		AutorServicio autorServicio = new AutorServicioImpl();
+		List<Autor> listaAutores= autorServicio.obtenerTodosLosAutores();
 		// pasar a la vista
 		request.setAttribute("listaAutores", listaAutores);
 		
 		// metodo encargado del despliegue del jsp
-		request.getRequestDispatcher("libro/registrar.jsp").forward(request, response);
+		request.getRequestDispatcher("/libro/registrar.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

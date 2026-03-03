@@ -13,8 +13,10 @@
   <body>
     <div class="container">
     <jsp:include page="/WEB-INF/jsp/include/navbar.jsp"></jsp:include>
+    <br>
+    <h2>Crear Libro</h2>
     <!-- formulario de creacion -->
-    <form action="registrar/libro" method="post">
+    <form action="libros" method="post">
 	  <div class="mb-3">
 	    <label for="isbn" class="form-label">ISBN</label>
 	    <input type="text" class="form-control" id="isbn" name="isbn">
@@ -23,16 +25,24 @@
 	    <label for="titulo" class="form-label">Titulo</label>
 	    <input type="text" class="form-control" id="titulo" name="titulo">
 	  </div>
-	  
-		<select class="form-select" name="autor">
+	  <div class="mb-3">
+	  <label for="autor" class="form-label">Autor</label>
+		<select class="form-select" name="autor" id="autor">
+		
 			<option value="0" selected>Seleccione el Autor</option>
-			<c:forEach var="${autor}" items="${listaAutores}">
-			<option value="${autor.id}">${autor.nombre}</option>
+			<c:forEach var="autor" items="${listaAutores}">
+				<option value="${autor.id}" >
+					<c:out value="${autor.nombre}"></c:out>
+				</option>
 			</c:forEach>
 		</select>
-
+		</div>
+		<br>
 	  <button type="submit" class="btn btn-primary">Crear Libro</button>
 	</form>
+	<br>
+	<hr>
+	<h2>Listado de Libros</h2>
     <!-- tabla con libros -->
     <table class="table">
   <thead>

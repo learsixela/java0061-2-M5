@@ -1,6 +1,7 @@
 package cl.biblioteca.digital.daos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,7 +23,8 @@ public class AutorDAOImpl implements AutorDAO {
             while (rs.next()) {
                 Autor autor = new Autor(
                         rs.getInt("id"),
-                        rs.getString("nombre")
+                        rs.getString("nombre"),
+                        rs.getString("nacionalidad")
                 );
                 autores.add(autor);
             }
@@ -39,9 +41,25 @@ public class AutorDAOImpl implements AutorDAO {
 	}
 
 	@Override
-	public Autor obtenerTrabajador(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Autor obtenerAutor(int id) {
+		Autor autor = null;
+        try (Connection conn =  DBConnection.getConnection()) {
+            String sql = "SELECT * FROM autores WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+            	autor = new Autor(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("nacionalidad")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return autor;
 	}
 
 	@Override
