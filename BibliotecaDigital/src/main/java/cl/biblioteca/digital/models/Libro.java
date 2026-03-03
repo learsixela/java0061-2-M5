@@ -4,7 +4,10 @@ public class Libro {
 	private int id;
 	private String isbn;
 	private String titulo;
+	//private int autor_id;
 	private Autor autor;
+	private int stock;
+	
 	public Libro() {
 		super();
 	}
@@ -44,6 +47,12 @@ public class Libro {
 	}
 	public void setAutor(Autor autor) {
 		this.autor = autor;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	
 	

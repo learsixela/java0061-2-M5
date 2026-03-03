@@ -35,7 +35,9 @@ public class LibroServlet extends HttpServlet {
 		request.setAttribute("listaAutores", listaAutores);
 		
 		// TODOS LOS LIBROS
-		
+		List<Libro> listaLibros= libroServicio.obtenerTodosLosLibros();
+		// pasar a la vista
+		request.setAttribute("listaLibros", listaLibros);
 		
 		request.getRequestDispatcher("libro/libro.jsp").forward(request, response);
 	}
@@ -70,7 +72,7 @@ public class LibroServlet extends HttpServlet {
 			}
 		}
 		
-		//redireccion a un jso o servlet
+		//redireccion a un jsp o servlet
 		doGet(request, response);
 		
 	}

@@ -28,7 +28,6 @@
 	  <div class="mb-3">
 	  <label for="autor" class="form-label">Autor</label>
 		<select class="form-select" name="autor" id="autor">
-		
 			<option value="0" selected>Seleccione el Autor</option>
 			<c:forEach var="autor" items="${listaAutores}">
 				<option value="${autor.id}" >
@@ -45,35 +44,29 @@
 	<h2>Listado de Libros</h2>
     <!-- tabla con libros -->
     <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
-    </tr>
-  </tbody>
-</table>
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">ISBN</th>
+	      <th scope="col">Titulo</th>
+	      <th scope="col">Nombre Autor</th>
+	      <th scope="col">Nacionalidad Autor</th>
+	      <th scope="col-2">Acciones</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	<c:forEach var="libro" items="${listaLibros}">
+		    <tr>
+		      <td><c:out value="${libro.id}"></c:out></td>
+		      <td><c:out value="${libro.isbn}"></c:out></td>
+		      <td><c:out value="${libro.titulo}"></c:out></td>
+		      <td><c:out value="${libro.autor.nombre}"></c:out></td>
+		      <td><c:out value="${libro.autor.nacionalidad}"></c:out></td>
+		    </tr>
+		</c:forEach>
+
+	  </tbody>
+	</table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>

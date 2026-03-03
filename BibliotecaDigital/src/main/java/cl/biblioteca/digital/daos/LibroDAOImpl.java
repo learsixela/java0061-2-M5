@@ -1,12 +1,15 @@
 package cl.biblioteca.digital.daos;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
+import cl.biblioteca.digital.models.Autor;
 import cl.biblioteca.digital.models.Libro;
 import cl.biblioteca.digital.util.DBConnection;
 
 public class LibroDAOImpl implements LibroDAO{
-
+ 
 	@Override
 	public void crearLibro(Libro libro) {
         try (Connection conn = DBConnection.getConnection()) {
@@ -22,6 +25,37 @@ public class LibroDAOImpl implements LibroDAO{
             e.printStackTrace();
         }
 		
+	}
+
+	@Override
+	public List<Libro> obtenerTodosLosLibros() {
+        List<Libro> libros = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT l.id, l.isbn, l.titulo, a.id autor_id, a.nombre, a.nacionalidad \n"
+            		+ "FROM libros l JOIN autores a ON a.id = l.autor_id";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+            	Autor autor = new Autor(
+                        rs.getInt("autor_id"),
+                        rs.getString("nombre"),
+                        rs.getString("nacionalidad")
+                );
+            	
+            	Libro libro = new Libro();
+            	//setter
+            	libro.setId(rs.getInt("id"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(autor);
+                //rs.getInt("autor_id")
+            	
+                libros.add(libro);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return libros;
 	}
 
 }

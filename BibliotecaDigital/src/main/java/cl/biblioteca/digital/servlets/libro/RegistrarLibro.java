@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class RegistrarLibro
  */
-@WebServlet("/registrar/libro")
+@WebServlet("/libro/guardar")
 public class RegistrarLibro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

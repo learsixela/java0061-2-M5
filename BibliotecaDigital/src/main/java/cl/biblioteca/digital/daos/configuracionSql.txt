@@ -1,0 +1,49 @@
+1.- driver (jar) ok
+2.- base de datos ok
+3.- BDConnection.java ok
+
+4.- Clase (Usuario.java)
+5.- DAO.java (UsuarioDAO.java; UsuarioDAOImpl.java)
+6.- Servlet  y JSP
+
+
+create table usuarios(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	nick varchar(100) NOT NULL,
+	email VARCHAR(150) NOT NULL UNIQUE,
+	password varchar(255) NOT NULL,
+	edad int DEFAULT 0,
+	fecha_nacimiento DATE,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+create table Autores(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	nombre varchar(100) NOT NULL,
+	nacionalidad VARCHAR(150) NOT NULL
+);
+
+create table libros(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	isbn varchar(100) NOT NULL,
+	titulo VARCHAR(150) NOT NULL,
+	autor_id int NOT NULL,
+	stock int default 0,
+	foreign key(autor_id) references autores(id)
+	);
+
+1.- tabla libro
+2.- Clase (Libro.java)
+3.- vistas o jsp (libro.jsp crear; libros.jsp mostrar todos)
+4.- Servlets 
+5.- DAO.java (LibroDAO.java(interfaz); LibroDAOImpl.java (implementacion de la interfaz))
+
+
+//API RestFull
+//flujos
+GET  /libros -> lista de libros, lista de autores
+POST /libros o /libros/guardar
+
+
+
+

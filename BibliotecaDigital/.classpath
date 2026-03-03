@@ -13,7 +13,8 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/ipalm/eclipse-workspace/BibliotecaDigital/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-3.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ipalm/eclipse-workspace/BibliotecaDigital/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-3.0.2.jar"/>
+	<classpathentry kind="lib" path="D:/Alkemy/Java/M5/BibliotecaDigital/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-3.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Alkemy/Java/M5/BibliotecaDigital/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-3.0.2.jar"/>
+	<classpathentry kind="lib" path="D:/Alkemy/Java/M5/BibliotecaDigital/src/main/webapp/WEB-INF/lib/mysql-connector-j-9.6.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
