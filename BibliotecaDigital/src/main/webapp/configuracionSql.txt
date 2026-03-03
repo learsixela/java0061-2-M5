@@ -45,5 +45,9 @@ GET  /libros -> lista de libros, lista de autores
 POST /libros o /libros/guardar
 
 
-
+				<a onclick="return confirm('Quieres eliminar el libro?')" 
+					href="${pageContext.request.contextPath}/libros/eliminar?id=${libro.id}"
+				class="btn btn-danger disabled" role="button" aria-disabled="true">
+					Eliminar
+				</a>
 

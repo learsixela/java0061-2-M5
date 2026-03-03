@@ -8,6 +8,10 @@ public class Autor {
 	public Autor() {
 		super();
 	}
+	public Autor(int id) {
+		super();
+		this.id = id;
+	}
 	public Autor(String nombre, String nacionalidad) {
 		super();
 		this.nombre = nombre;

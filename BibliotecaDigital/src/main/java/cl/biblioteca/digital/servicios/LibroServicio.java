@@ -10,5 +10,11 @@ public interface LibroServicio {
 
 	List<Libro> obtenerTodosLosLibros();
 
+	void eliminarLibro(int id);
+
+	Libro obtenerLibro(int id);
+
+	void actualizarLibro(Libro libro);
+
 	
 }

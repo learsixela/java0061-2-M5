@@ -7,31 +7,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Libros::</title>
+    <title>Editar Libro::</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
     <jsp:include page="/WEB-INF/jsp/include/navbar.jsp"></jsp:include>
+    
     <!-- formulario de creacion -->
-    <form action="registrar/libro" method="post">
+    <form action="libros/editar" method="post">
+    	<input type="hidden" name="id" value="${libro.id}">
 	  <div class="mb-3">
 	    <label for="isbn" class="form-label">ISBN</label>
-	    <input type="text" class="form-control" id="isbn" name="isbn">
+	    <input type="text" class="form-control" id="isbn" name="isbn" value="${libro.isbn}">
 	  </div>
 	  <div class="mb-3">
 	    <label for="titulo" class="form-label">Titulo</label>
-	    <input type="text" class="form-control" id="titulo" name="titulo">
+	    <input type="text" class="form-control" id="titulo" name="titulo" value="${libro.titulo}">
 	  </div>
 	  
-		<select class="form-select" name="autor">
-			<option value="0" selected>Seleccione el Autor</option>
+		<select class="form-select" name="autorId">
+			<option value="0">Seleccione el Autor</option>
 			<c:forEach var="${autor}" items="${listaAutores}">
-			<option value="${autor.id}">${autor.nombre}</option>
+				<option value="${autor.id}"  
+					<c:if test="${autor.id == libro.autor.id}"> selected</c:if>
+				
+				>${autor.nombre}</option>
 			</c:forEach>
 		</select>
 
-	  <button type="submit" class="btn btn-primary">Crear Libro</button>
+	  <button type="submit" class="btn btn-primary">Actualizar Libro</button>
 	</form>
     <!-- tabla con libros -->
     <table class="table">

@@ -12,13 +12,30 @@ public class LibroServicioImpl implements LibroServicio {
 	
 	@Override
 	public void crearLibro(Libro libro) {
-		
 		libroDAO.crearLibro(libro);
 	}
 
 	@Override
 	public List<Libro> obtenerTodosLosLibros() {
 		return libroDAO.obtenerTodosLosLibros();
+	}
+
+	@Override
+	public void eliminarLibro(int id) {
+		libroDAO.eliminarLibro(id);
+		
+	}
+
+	@Override
+	public Libro obtenerLibro(int id) {
+		
+		return libroDAO.obtenerLibro(id);
+	}
+
+	@Override
+	public void actualizarLibro(Libro libro) {
+		libroDAO.actualizarLibro(libro);
+		
 	}
 
 }

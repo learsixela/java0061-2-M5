@@ -62,6 +62,19 @@
 		      <td><c:out value="${libro.titulo}"></c:out></td>
 		      <td><c:out value="${libro.autor.nombre}"></c:out></td>
 		      <td><c:out value="${libro.autor.nacionalidad}"></c:out></td>
+		      <td>
+		      	<a href="${pageContext.request.contextPath}/libros/eliminar?id="+${libro.id}
+		      	
+		      	class="btn btn-warning disabled" role="button" aria-disabled="true">Editar</a>
+				
+				<form action="${pageContext.request.contextPath}/libros/eliminar" method="post">
+					<input type="hidden" name="id" value="${libro.id}">
+					<button type="submit" class="btn btn-danger"
+					onclick="return confirm('Quieres eliminar el libro?');"
+					>Eliminar</button>
+				</form>
+		      
+		      </td>	
 		    </tr>
 		</c:forEach>
 

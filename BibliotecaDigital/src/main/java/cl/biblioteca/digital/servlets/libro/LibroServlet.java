@@ -65,6 +65,7 @@ public class LibroServlet extends HttpServlet {
 			Autor autor = autorServicio.obtenerAutor(id);
 			if(autor!= null) {
 				Libro libro = new Libro(isbn,titulo,autor);
+				
 				//enviar a capa servicios
 				libroServicio.crearLibro(libro);
 			} else {

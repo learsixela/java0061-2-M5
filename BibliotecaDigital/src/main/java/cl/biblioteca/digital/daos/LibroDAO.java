@@ -10,4 +10,10 @@ public interface LibroDAO {
 
 	List<Libro> obtenerTodosLosLibros();
 
+	void eliminarLibro(int id);
+
+	Libro obtenerLibro(int id);
+
+	void actualizarLibro(Libro libro);
+
 }
