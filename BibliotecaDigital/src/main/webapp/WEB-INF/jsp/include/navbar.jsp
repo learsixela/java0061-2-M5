@@ -13,15 +13,15 @@
 		</button>
 		<div class="collapse navbar-collapse d-lg-flex"
 			id="navbarsExample11">
-			<a class="navbar-brand col-lg-3 me-0" href="/">Sistema CRM</a>
+			<a class="navbar-brand col-lg-3 me-0" href="/">Biblioteca Digital</a>
 			<ul class="navbar-nav col-lg-6 justify-content-lg-center">
-			<c:if test="${not empty sessionScope.emailSession}">
-				<li class="nav-item">
-				<a class="nav-link active"
-					aria-current="page" href="dashboard">Dashboard</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="libros">Libros</a></li>
-			</c:if>
+				<c:if test="${not empty sessionScope.emailSession}">
+					<li class="nav-item">
+					<a class="nav-link active"
+						aria-current="page" href="dashboard">Dashboard</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="libros">Libros</a></li>
+				</c:if>
 				<li class="nav-item dropdown">
 					<a
 					class="nav-link dropdown-toggle" href="#"
@@ -30,7 +30,7 @@
                         Invitado
                     </c:if>
                     <c:if test="${not empty sessionScope.emailSession}">
-						${sessionScope.nickSession} - ${sessionScope.emailSession}
+						${sessionScope.nickSession}
 					</c:if>
 					</a>
 					<ul class="dropdown-menu">
@@ -39,7 +39,7 @@
 							<li><a class="dropdown-item" href="registrar">Registro</a></li>
 						</c:if>
 						<c:if test="${not empty sessionScope.emailSession}">
-							<li><a class="dropdown-item" href="logout">Cierre de Sesion</a></li>
+							<li><a class="dropdown-item" href="logout">Cierre de Sesión</a></li>
 						</c:if>
 					</ul>
 				</li>

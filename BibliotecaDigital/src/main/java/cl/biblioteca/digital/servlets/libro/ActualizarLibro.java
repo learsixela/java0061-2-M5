@@ -33,7 +33,7 @@ public class ActualizarLibro extends HttpServlet {
 		// pasar a la vista
 		List<Autor> listaAutores= autorServicio.obtenerTodosLosAutores();
 		request.setAttribute("listaAutores", listaAutores);
-		request.getRequestDispatcher("libro/editar.jsp").forward(request, response);
+		request.getRequestDispatcher("/libro/editar.jsp").forward(request, response);
 	}
 
 

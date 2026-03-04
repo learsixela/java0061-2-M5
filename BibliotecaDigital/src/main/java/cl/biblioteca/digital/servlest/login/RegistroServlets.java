@@ -1,11 +1,15 @@
 package cl.biblioteca.digital.servlest.login;
 
+import java.io.IOException;
+
+import cl.biblioteca.digital.dtos.UsuarioDTO;
+import cl.biblioteca.digital.servicios.UsuarioServicio;
+import cl.biblioteca.digital.servicios.UsuarioServicioImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * Servlet implementation class Registro
@@ -13,6 +17,7 @@ import java.io.IOException;
 @WebServlet("/registrar")
 public class RegistroServlets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private final UsuarioServicio usuarioServicio = new UsuarioServicioImpl();
        
     public RegistroServlets() {
         super();
@@ -32,12 +37,12 @@ public class RegistroServlets extends HttpServlet {
 		//logica de validacion
 		
 		//se almacenan los datos en BD
-		System.out.println(nick+" "+ email+" "+ password);
+		UsuarioDTO usuario = new UsuarioDTO(nick,email, password);
+		
+		usuarioServicio.guardarUsuario(usuario);
 		
 		//enviar datos al front
-		request.setAttribute("nick", nick);
 		request.setAttribute("email", email);
-		request.setAttribute("password", password);
 		
 		request.getRequestDispatcher("login/login.jsp").forward(request, response);
 	}
