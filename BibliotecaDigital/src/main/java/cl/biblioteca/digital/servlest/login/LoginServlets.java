@@ -43,15 +43,16 @@ public class LoginServlets extends HttpServlet {
 		Usuario usuario = usuarioServicio.obtenerUsuario(email, password);
 		
 		if(usuario != null) {
+			System.out.println("El usuario existe "+ usuario.toString());
 			// guardar en session si los datos son correctos!!
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession();
 			session.setAttribute("emailSession", usuario.getEmail());
 			session.setAttribute("nickSession", usuario.getNick());
-			//request.getRequestDispatcher("dashboard.jsp").forward(request, response);
-			
 			response.sendRedirect(request.getContextPath()+"/dashboard");
+			return;
 		}
 		//mensaje de error
+		request.setAttribute("error", "Email o contraseña incorrectos");
 		request.getRequestDispatcher("login/login.jsp").forward(request, response);
 		
 	}

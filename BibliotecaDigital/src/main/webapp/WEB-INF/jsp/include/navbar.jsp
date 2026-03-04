@@ -21,6 +21,7 @@
 						aria-current="page" href="dashboard">Dashboard</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="libros">Libros</a></li>
+					<li class="nav-item"><a class="nav-link" href="prestamos">Prestamos</a></li>
 				</c:if>
 				<li class="nav-item dropdown">
 					<a
