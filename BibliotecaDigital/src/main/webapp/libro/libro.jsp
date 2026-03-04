@@ -49,6 +49,7 @@
 	      <th scope="col">#</th>
 	      <th scope="col">ISBN</th>
 	      <th scope="col">Titulo</th>
+	      <th scope="col">Stock</th>
 	      <th scope="col">Nombre Autor</th>
 	      <th scope="col">Nacionalidad Autor</th>
 	      <th scope="col-2">Acciones</th>
@@ -60,10 +61,11 @@
 		      <td><c:out value="${libro.id}"></c:out></td>
 		      <td><c:out value="${libro.isbn}"></c:out></td>
 		      <td><c:out value="${libro.titulo}"></c:out></td>
+		      <td><c:out value="${libro.stock}"></c:out></td>
 		      <td><c:out value="${libro.autor.nombre}"></c:out></td>
 		      <td><c:out value="${libro.autor.nacionalidad}"></c:out></td>
 		      <td>
-		      	<a href="${pageContext.request.contextPath}/libros/actualizar?id=${libro.id}"
+		      	<a href="${pageContext.request.contextPath}/libros/editar?id=${libro.id}"
 		      	
 		      	class="btn btn-warning" role="button" aria-disabled="true">Editar</a>
 				

@@ -47,7 +47,9 @@ public class LoginServlets extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("emailSession", usuario.getEmail());
 			session.setAttribute("nickSession", usuario.getNick());
-			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+			//request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+			
+			response.sendRedirect(request.getContextPath()+"/dashboard");
 		}
 		//mensaje de error
 		request.getRequestDispatcher("login/login.jsp").forward(request, response);

@@ -18,8 +18,8 @@ import cl.biblioteca.digital.servicios.LibroServicioImpl;
 /**
  * Servlet implementation class ActualizarLibro
  */
-@WebServlet("/libros/actualizar")
-public class ActualizarLibro extends HttpServlet {
+@WebServlet("/libros/editar")
+public class EditarLibro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final AutorServicio autorServicio = new AutorServicioImpl();
 	private final LibroServicio libroServicio = new LibroServicioImpl();
@@ -42,12 +42,14 @@ public class ActualizarLibro extends HttpServlet {
 		String isbn = request.getParameter("isbn");
 		String titulo = request.getParameter("titulo");
 		int idAutor = Integer.parseInt(request.getParameter("autorId"));
+		int stock = Integer.parseInt(request.getParameter("stock"));
 		//validar si el autor existe
 		Libro libro = new Libro();
 		libro.setId(idLibro);
 		libro.setIsbn(isbn);
 		libro.setTitulo(titulo);
 		libro.setAutor(new Autor(idAutor));
+		libro.setStock(stock);
 		
 		libroServicio.actualizarLibro(libro);
 		response.sendRedirect(request.getContextPath()+"/libros");

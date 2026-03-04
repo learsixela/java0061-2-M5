@@ -31,7 +31,7 @@ public class LibroDAOImpl implements LibroDAO{
 	public List<Libro> obtenerTodosLosLibros() {
         List<Libro> libros = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT l.id, l.isbn, l.titulo, a.id autor_id, a.nombre, a.nacionalidad \n"
+            String sql = "SELECT l.id, l.isbn, l.titulo,l.stock, a.id autor_id, a.nombre, a.nacionalidad \n"
             		+ "FROM libros l JOIN autores a ON a.id = l.autor_id";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -47,6 +47,7 @@ public class LibroDAOImpl implements LibroDAO{
             	libro.setId(rs.getInt("id"));
                 libro.setIsbn(rs.getString("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
+                libro.setStock(rs.getInt("stock"));
                 libro.setAutor(autor);
                 //rs.getInt("autor_id")
             	
@@ -74,7 +75,7 @@ public class LibroDAOImpl implements LibroDAO{
 	public Libro obtenerLibro(int id) {
        Libro libro = null;
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT l.id, l.isbn, l.titulo, a.id autor_id, a.nombre, a.nacionalidad \n"
+            String sql = "SELECT l.id, l.isbn, l.titulo,l.stock, a.id autor_id, a.nombre, a.nacionalidad \n"
             		+ "FROM libros l JOIN autores a ON a.id = l.autor_id where l.id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -92,6 +93,7 @@ public class LibroDAOImpl implements LibroDAO{
             	libro.setId(rs.getInt("id"));
                 libro.setIsbn(rs.getString("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
+                libro.setStock(rs.getInt("stock"));
                 libro.setAutor(autor);
             }
         } catch (SQLException e) {
@@ -103,12 +105,13 @@ public class LibroDAOImpl implements LibroDAO{
 	@Override
 	public void actualizarLibro(Libro libro) {
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "UPDATE libros SET isbn = ?, titulo = ?, autor_id = ? WHERE id = ?";
+            String sql = "UPDATE libros SET isbn = ?, titulo = ?, autor_id = ?, stock = ? WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, libro.getIsbn());
             ps.setString(2, libro.getTitulo());
             ps.setDouble(3, libro.getAutor().getId());
-            ps.setInt(4, libro.getId());
+            ps.setInt(4, libro.getStock());
+            ps.setInt(5, libro.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

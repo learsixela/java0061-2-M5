@@ -13,9 +13,9 @@
   <body>
     <div class="container">
     <jsp:include page="/WEB-INF/jsp/include/navbar.jsp"></jsp:include>
-    
+    <h2>Editar Libro</h2>
     <!-- formulario de creacion -->
-    <form action="libros/editar" method="post">
+    <form action="${pageContext.request.contextPath}/libros/editar" method="post">
     	<input type="hidden" name="id" value="${libro.id}">
 	  <div class="mb-3">
 	    <label for="isbn" class="form-label">ISBN</label>
@@ -25,16 +25,19 @@
 	    <label for="titulo" class="form-label">Titulo</label>
 	    <input type="text" class="form-control" id="titulo" name="titulo" value="${libro.titulo}">
 	  </div>
-	  
+	  <div class="mb-3">
 		<select class="form-select" name="autorId">
 			<option value="0">Seleccione el Autor</option>
-			<c:forEach var="${autor}" items="${listaAutores}">
-				<option value="${autor.id}"  
-					<c:if test="${autor.id == libro.autor.id}"> selected</c:if>
-			>${autor.nombre}</option>
+			<c:forEach var="autor" items="${listaAutores}">
+				<option value="${autor.id}" <c:if test="${autor.id == libro.autor.id}"> selected</c:if>>${autor.nombre}</option>
 			</c:forEach>
 		</select>
-
+		</div>
+		<div class="mb-3">
+		    <label for="stock" class="form-label">Stock</label>
+		    <input type="number" class="form-control" id="stock" name="stock" value="${libro.stock}" min="0" max="100">
+		  </div>
+		 <br> 
 	  <button type="submit" class="btn btn-primary">Actualizar Libro</button>
 	</form>
 
