@@ -51,3 +51,41 @@ POST /libros o /libros/guardar
 					Eliminar
 				</a>
 
+// crear cliente
+ create table clientes(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	nick varchar(100) NOT NULL,
+	email VARCHAR(150) NOT NULL UNIQUE,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+// crear prestamo
+create table prestamos(
+	id int AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    libro_id INT NOT NULL,
+    
+	fecha_solicitud TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    fecha_devolucion DATETIME NOT NULL,
+    fecha_vencimiento DATETIME NOT NULL,
+    
+    estado varchar(50) NOT NULL, -- devuelto, vencido, prestado
+	
+    CONSTRAINT fk_prestamo_cliente FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+    CONSTRAINT fk_prestamo_libro FOREIGN KEY (libro_id) REFERENCES libros(id)
+);
+
+
+//LOGICA DEL PRESTAMO
+ 
+
+//LOGICA DE DEVOLUCION
+
+
+
+
+
+
+
+

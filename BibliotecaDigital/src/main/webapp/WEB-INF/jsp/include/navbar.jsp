@@ -40,6 +40,7 @@
 							<li><a class="dropdown-item" href="registrar">Registro</a></li>
 						</c:if>
 						<c:if test="${not empty sessionScope.emailSession}">
+							<li><a class="dropdown-item" href="usuario/editar">Editar perfil</a></li>
 							<li><a class="dropdown-item" href="logout">Cierre de Sesión</a></li>
 						</c:if>
 					</ul>
